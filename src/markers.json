@@ -1,0 +1,52 @@
+{
+    "Markers": [
+        {
+            "id": 1,
+            "position": {
+                "lat": 51.528462,
+                "lng": -0.154751
+            },
+            "title": "Secret Gardens"
+        },
+        {
+            "id": 2,
+            "position": {
+                "lat": 51.5559573,
+                "lng": -0.1775898
+            },
+            "title": "Waterstones"
+        },
+        {
+            "id": 3,
+            "position": {
+                "lat": 51.571337,
+                "lng": -0.167617
+            },
+            "title": "Kenwood House"
+        },
+        {
+            "id": 4,
+            "position": {
+                "lat": 51.566927,
+                "lng": -0.147071
+            },
+            "title": "Highgate cementery"
+        },
+        {
+            "id": 5,
+            "position": {
+                "lat": 51.542414,
+                "lng": -0.148923
+            },
+            "title": "The Stables Market"
+        },
+        {
+            "id": 6,
+            "position": {
+                "lat": 51.569902,
+                "lng": -0.173975
+            },
+            "title": "Spaniards Inn"
+        }
+    ]
+}
