@@ -1,72 +1,97 @@
+/* global google */
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
-import MapContainer from './MapContainer';
+import MapContainer from './MapContainer'
+import SideBar from './SideBar';
 
 class App extends Component {
   state = {
     markers: [
       {
-        "id": 1,
+        "id": 0,
         "position": {
           "lat": 51.528462,
           "lng": -0.154751
         },
         "title": "Secret Gardens",
-        "info": "This is an InfoWindow"
+        "infowindow": {
+          "info": "This is an InfoWindow",
+          "show": false
+        }
       },
       {
-        "id": 2,
+        "id": 1,
         "position": {
           "lat": 51.5559573,
           "lng": -0.1775898
         },
         "title": "Waterstones",
-        "info": "This is an InfoWindow"
+        "infowindow": {
+          "info": "This is an InfoWindow",
+          "show": false
+        }
       },
       {
-        "id": 3,
+        "id": 2,
         "position": {
           "lat": 51.571337,
           "lng": -0.167617
         },
         "title": "Kenwood House",
-        "info": "This is an InfoWindow"
+        "infowindow": {
+          "info": "This is an InfoWindow",
+          "show": false
+        }
       },
       {
-        "id": 4,
+        "id": 3,
         "position": {
           "lat": 51.566927,
           "lng": -0.147071
         },
         "title": "Highgate cementery",
-        "info": "This is an InfoWindow"
+        "infowindow": {
+          "info": "This is an InfoWindow",
+          "show": false
+        }
       },
       {
-        "id": 5,
+        "id": 4,
         "position": {
           "lat": 51.542414,
           "lng": -0.148923
         },
         "title": "The Stables Market",
-        "info": "This is an InfoWindow"
+        "infowindow": {
+          "info": "This is an InfoWindow",
+          "show": false
+        }
       },
       {
-        "id": 6,
+        "id": 5,
         "position": {
           "lat": 51.569902,
           "lng": -0.173975
         },
         "title": "Spaniards Inn",
-        "info": "This is an InfoWindow"
+        "infowindow": {
+          "info": "This is an InfoWindow",
+          "show": false
+        }
       }
     ],
-    isOpen: false
+    sideBarOpen: false
   }
 
-  onToggleOpen = () => {
-    this.setState(state => {
-      state.isOpen = !state.isOpen;
+  handleMarkerClick = (marker) => {
+    //this.setState({ markers: [marker] });
+    this.setState(prevState => {
+      return this.state.markers = prevState.markers.map(mk => {
+        if (mk.id === marker.id) {
+          mk.infowindow.show = !mk.infowindow.show;
+        }
+        return mk;
+      })
     })
   }
 
@@ -92,16 +117,25 @@ class App extends Component {
 
   render() {
     return (
-      <div >
-        <MapContainer
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBVIuzCa8szWMl9TlCOoveWgr8z49YqeQ&v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `100vh` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
+      <div id="outer-container">
+        <SideBar
+          isOpen={this.state.sideBarOpen}
+          pageWrapId="page-wrap"
+          outerContainerId="outer-container"
           markers={this.state.markers}
-          isOpen={this.state.isOpen}
-          onClick={()=>this.onToggleOpen()}
         />
+        <main id="page-wrap">
+          <div>
+            <MapContainer
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBVIuzCa8szWMl9TlCOoveWgr8z49YqeQ&v=3.exp&libraries=geometry,drawing,places"
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `100vh` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+              markers={this.state.markers}
+              onMarkerClick={(marker) => this.handleMarkerClick(marker)}
+            />
+          </div>
+        </main>
       </div>
     );
   }

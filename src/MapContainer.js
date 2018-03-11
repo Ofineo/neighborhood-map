@@ -1,9 +1,13 @@
 /* global google */
 
 import React from 'react';
+import { compose, withProps, withStateHandlers } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 
-const MapContainer = withScriptjs(withGoogleMap((props) =>
+const MapContainer = compose(
+    withScriptjs,
+    withGoogleMap
+)((props) =>
     <GoogleMap
         defaultZoom={14}
         defaultCenter={{
@@ -17,14 +21,16 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>
                 position={marker.position}
                 title={marker.title}
                 animation={google.maps.Animation.DROP}
+                onClick={() => props.onMarkerClick(marker)}
             >
-            {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
-                <div>
-                    <p>{marker.info}</p>
-                </div>
-            </InfoWindow>}
+                {marker.infowindow.show === true && (
+                    <InfoWindow >
+                        <div>
+                            <p>{marker.infowindow.info}</p>
+                        </div>
+                    </InfoWindow>)}
             </Marker>
         ))}
     </GoogleMap>
-))
+)
 export default MapContainer;
