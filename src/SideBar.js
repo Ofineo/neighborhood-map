@@ -1,6 +1,6 @@
 import './SideBar.css';
-import React, { Component } from 'react';
-import { Nav, Navbar, NavbarBrand, NavItem, NavLink, NavbarToggler, Collapse } from 'reactstrap';
+import React from 'react';
+//import { Nav, Navbar, NavbarBrand, NavItem, NavLink, NavbarToggler, Collapse } from 'reactstrap';
 import { push as Menu } from 'react-burger-menu'
 
 const SideBar = (props) => {
@@ -15,8 +15,8 @@ const SideBar = (props) => {
             outerContainerId="outer-container"
         >
             {props.markers.map(mk => (
-                <div>
-                    <a id="home" className="menu-item" href="/">{mk.title}</a>
+                <div key={mk.id}>
+                    <a id="home" className="menu-item" href="/">{mk.title} </a>
                 </div>
             ))}
         </Menu>
