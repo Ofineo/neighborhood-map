@@ -89,6 +89,8 @@ class App extends Component {
       return this.state.markers = prevState.markers.map(mk => {
         if (mk.id === marker.id) {
           mk.infowindow.show = !mk.infowindow.show;
+        }else{
+          mk.infowindow.show = false;
         }
         return mk;
       })
@@ -123,6 +125,7 @@ class App extends Component {
           pageWrapId="page-wrap"
           outerContainerId="outer-container"
           markers={this.state.markers}
+          onMarkerClick={(marker) => this.handleMarkerClick(marker)}
         />
         <main id="page-wrap">
           <div>

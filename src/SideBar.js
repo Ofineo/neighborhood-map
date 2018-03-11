@@ -1,7 +1,8 @@
 import './SideBar.css';
 import React from 'react';
 //import { Nav, Navbar, NavbarBrand, NavItem, NavLink, NavbarToggler, Collapse } from 'reactstrap';
-import { push as Menu } from 'react-burger-menu'
+import { push as Menu } from 'react-burger-menu';
+import Filter from './Filter';
 
 const SideBar = (props) => {
 
@@ -13,10 +14,12 @@ const SideBar = (props) => {
             isOpen={props.isOpen}
             pageWrapId="page-wrap"
             outerContainerId="outer-container"
+            disableCloseOnEsc
         >
+        <Filter/>
             {props.markers.map(mk => (
                 <div key={mk.id}>
-                    <a id="home" className="menu-item" href="/">{mk.title} </a>
+                    <p id="markers" className="menu-item" onClick={() => props.onMarkerClick(mk)}>{mk.title} </p>
                 </div>
             ))}
         </Menu>

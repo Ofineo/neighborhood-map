@@ -16,6 +16,12 @@ body{
     margin: 0;
 }
 
+#markers {
+    text-decoration: none;
+    color: #fdfdfd;	
+    cursor: pointer;
+}
+
 img{
     max-width: 100%;
 }
@@ -60,7 +66,7 @@ img{
   /* Wrapper for item list */
   .bm-item-list {
     color: #b8b7ad;
-    padding: 0.8em;
+    padding: 0.4em;
   }
   
   /* Styling of overlay */
