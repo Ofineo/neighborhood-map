@@ -7,15 +7,25 @@ class Filter extends Component {
         query: ''
     }
 
-    updateQuery = (query) => {
-        this.setState(state => state.query = query)
+    updateSearchBox = (query) => {
+        this.setState({ query })
+        this.props.updateQuery(query);
     }
 
     render() {
         return (
-            <div className="search-books-input-wrapper">
-                <input id="search-box" value={this.state.query} onChange={(event) => this.updateQuery(event.target.value)} type="text" placeholder="filter by marker name" />
-                <span id="filter"><i class="fas fa-filter"></i></span>
+            <div 
+            className="search-books-input-wrapper"
+            >
+                <input
+                    id="search-box"
+                    value={this.state.query}
+                    onChange={(event) => this.updateSearchBox(event.target.value)}
+                    type="text"
+                    placeholder="filter by marker name"
+                    
+                />
+                <span id="filter"><i className="fas fa-filter"></i></span>
             </div>
         );
     }

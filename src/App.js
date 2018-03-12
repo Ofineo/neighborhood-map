@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MapContainer from './MapContainer'
 import SideBar from './SideBar';
+import escapeRegExp from "escape-string-regexp";
 
 class App extends Component {
   state = {
@@ -80,7 +81,12 @@ class App extends Component {
         }
       }
     ],
+    markersShown: [],
     sideBarOpen: false
+  }
+
+  componentDidMount() {
+    this.setState({ markersShown: this.state.markers })
   }
 
   handleMarkerClick = (marker) => {
@@ -89,12 +95,28 @@ class App extends Component {
       return this.state.markers = prevState.markers.map(mk => {
         if (mk.id === marker.id) {
           mk.infowindow.show = !mk.infowindow.show;
-        }else{
+        } else {
           mk.infowindow.show = false;
         }
         return mk;
       })
     })
+  }
+
+  updateQuery = (query) => {
+    console.log(query);
+
+    if (query) {
+      const match = new RegExp(escapeRegExp(query), 'i');
+      this.setState(prevState => {
+        return this.state.markersShown = prevState.markers.filter((c) => match.test(c.title));
+      })
+    } else {
+      this.setState(prevState => {
+        return this.state.markersShown = prevState.markers;
+      })
+    }
+
   }
 
   /**
@@ -117,15 +139,19 @@ class App extends Component {
   }
   */
 
+
   render() {
+
+
     return (
       <div id="outer-container">
         <SideBar
           isOpen={this.state.sideBarOpen}
           pageWrapId="page-wrap"
           outerContainerId="outer-container"
-          markers={this.state.markers}
+          markers={this.state.markersShown}
           onMarkerClick={(marker) => this.handleMarkerClick(marker)}
+          updateQuery={(query) => this.updateQuery(query)}
         />
         <main id="page-wrap">
           <div>
@@ -134,8 +160,9 @@ class App extends Component {
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `100vh` }} />}
               mapElement={<div style={{ height: `100%` }} />}
-              markers={this.state.markers}
+              markers={this.state.markersShown}
               onMarkerClick={(marker) => this.handleMarkerClick(marker)}
+              icon={this.image}
             />
           </div>
         </main>

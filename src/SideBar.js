@@ -16,7 +16,9 @@ const SideBar = (props) => {
             outerContainerId="outer-container"
             disableCloseOnEsc
         >
-        <Filter/>
+        <Filter
+        updateQuery={(query)=>props.updateQuery(query)}
+        />
             {props.markers.map(mk => (
                 <div key={mk.id}>
                     <p id="markers" className="menu-item" onClick={() => props.onMarkerClick(mk)}>{mk.title} </p>
