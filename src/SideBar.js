@@ -6,8 +6,6 @@ import Filter from './Filter';
 
 const SideBar = (props) => {
 
-    var sidebarContent = <b>Sidebar content</b>
-
     return (
         <Menu
             id="push"
@@ -16,9 +14,9 @@ const SideBar = (props) => {
             outerContainerId="outer-container"
             disableCloseOnEsc
         >
-        <Filter
-        updateQuery={(query)=>props.updateQuery(query)}
-        />
+            <Filter
+                updateQuery={(query) => props.updateQuery(query)}
+            />
             {props.markers.map(mk => (
                 <div key={mk.id}>
                     <p id="markers" className="menu-item" onClick={() => props.onMarkerClick(mk)}>{mk.title} </p>

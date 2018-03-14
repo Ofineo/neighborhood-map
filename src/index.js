@@ -7,6 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-ReactDOM.render(    
+ReactDOM.render(
         <App />, document.getElementById('root'));
 registerServiceWorker();

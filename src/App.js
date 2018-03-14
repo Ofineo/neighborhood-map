@@ -82,15 +82,18 @@ class App extends Component {
       }
     ],
     markersShown: [],
+    markersAnimation: google.maps.Animation.DROP,
     sideBarOpen: false
   }
 
   componentDidMount() {
-    this.setState({ markersShown: this.state.markers })
+    this.setState({
+      markersShown: this.state.markers,
+      markersAnimation: google.maps.Animation.DROP
+    })
   }
 
   handleMarkerClick = (marker) => {
-    //this.setState({ markers: [marker] });
     this.setState(prevState => {
       return this.state.markers = prevState.markers.map(mk => {
         if (mk.id === marker.id) {
@@ -101,6 +104,10 @@ class App extends Component {
         return mk;
       })
     })
+    // this.setState({
+    //   markersAnimation: google.maps.Animation.BOUNCE
+
+    // })
   }
 
   updateQuery = (query) => {
@@ -116,9 +123,12 @@ class App extends Component {
         return this.state.markersShown = prevState.markers;
       })
     }
-
   }
 
+  updateMarker= (MarkerComponent)=>{
+    console.log(MarkerComponent);
+    //MarkerComponent.setAnimation(DROP);
+  }
   /**
    * Fetch all markers.
    
@@ -138,9 +148,15 @@ class App extends Component {
       })
   }
   */
-
-
   render() {
+
+    const image = {
+      url: 'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|3366CC|40|_|%E2%80%A2',
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(14, 36),
+      scaledSize: new google.maps.Size(25, 36)
+    }
 
 
     return (
@@ -152,17 +168,18 @@ class App extends Component {
           markers={this.state.markersShown}
           onMarkerClick={(marker) => this.handleMarkerClick(marker)}
           updateQuery={(query) => this.updateQuery(query)}
+          updateMarker={(MarkerComponent)=>this.updateMarker(MarkerComponent)}
         />
         <main id="page-wrap">
           <div>
             <MapContainer
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBVIuzCa8szWMl9TlCOoveWgr8z49YqeQ&v=3.exp&libraries=geometry,drawing,places"
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `100vh` }} />}
               mapElement={<div style={{ height: `100%` }} />}
               markers={this.state.markersShown}
               onMarkerClick={(marker) => this.handleMarkerClick(marker)}
-              icon={this.image}
+              icon={image}
+              animation={this.state.markersAnimation}
             />
           </div>
         </main>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Filter.css';
-import { Button } from 'reactstrap';
 
 class Filter extends Component {
     state = {
@@ -14,8 +13,8 @@ class Filter extends Component {
 
     render() {
         return (
-            <div 
-            className="search-books-input-wrapper"
+            <div
+                className="search-books-input-wrapper"
             >
                 <input
                     id="search-box"
@@ -23,7 +22,6 @@ class Filter extends Component {
                     onChange={(event) => this.updateSearchBox(event.target.value)}
                     type="text"
                     placeholder="filter by marker name"
-                    
                 />
                 <span id="filter"><i className="fas fa-filter"></i></span>
             </div>
