@@ -125,10 +125,6 @@ class App extends Component {
     }
   }
 
-  updateMarker= (MarkerComponent)=>{
-    console.log(MarkerComponent);
-    //MarkerComponent.setAnimation(DROP);
-  }
   /**
    * Fetch all markers.
    
@@ -168,7 +164,6 @@ class App extends Component {
           markers={this.state.markersShown}
           onMarkerClick={(marker) => this.handleMarkerClick(marker)}
           updateQuery={(query) => this.updateQuery(query)}
-          updateMarker={(MarkerComponent)=>this.updateMarker(MarkerComponent)}
         />
         <main id="page-wrap">
           <div>

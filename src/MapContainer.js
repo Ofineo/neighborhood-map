@@ -25,7 +25,6 @@ const MapContainer = compose(
                     title={marker.title}
                     animation={props.animation}
                     onClick={() => props.onMarkerClick(marker)}
-                    ref={ component => props.updateMarker(component)}
                     icon={props.icon}
                 >
                     {marker.infowindow.show === true && (
