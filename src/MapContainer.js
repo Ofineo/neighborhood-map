@@ -30,7 +30,7 @@ const MapContainer = compose(
                     infoWindow={props.infoWindow}
                 />
             </InfoWindow>}
-            
+
             {props.markers.map(marker => (
                 <Marker
                     key={marker.id}
@@ -40,12 +40,6 @@ const MapContainer = compose(
                     onClick={() => props.onMarkerClick(marker)}
                     icon={props.icon}
                 >
-                    {/*marker.infowindow.show === true && (
-                        <InfoWindow >
-                            <div>
-                                <p>{marker.infowindow.info}</p>
-                            </div>
-                    </InfoWindow>)*/}
                 </Marker>
             ))}
         </GoogleMap>

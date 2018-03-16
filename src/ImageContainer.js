@@ -6,7 +6,7 @@ const ImageContainer = (props) => {
         <div>
             <img src={`${props.infoWindow.content.venue.photos.groups["0"].items["0"].prefix}200x150${props.infoWindow.content.venue.photos.groups["0"].items["0"].suffix}`} />
             <TextContainer
-            infoWindow={props.infoWindow}
+                infoWindow={props.infoWindow}
             />
         </div>
 

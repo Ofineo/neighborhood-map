@@ -16,7 +16,7 @@ class App extends Component {
           "lng": -0.154751
         },
         "title": "Secret Gardens",
-        "fourSquareId":"57d01d5638fa8331f862a9d8",
+        "fourSquareId": "57d01d5638fa8331f862a9d8",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -29,7 +29,7 @@ class App extends Component {
           "lng": -0.1775898
         },
         "title": "Waterstones",
-        "fourSquareId":"4b5306b9f964a520ee8c27e3",
+        "fourSquareId": "4b5306b9f964a520ee8c27e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -42,7 +42,7 @@ class App extends Component {
           "lng": -0.167617
         },
         "title": "Kenwood House",
-        "fourSquareId":"4ac518cef964a52034a620e3",
+        "fourSquareId": "4ac518cef964a52034a620e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -55,7 +55,7 @@ class App extends Component {
           "lng": -0.147071
         },
         "title": "Highgate cementery",
-        "fourSquareId":"4ac518cef964a5201ba620e3",
+        "fourSquareId": "4ac518cef964a5201ba620e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -68,7 +68,7 @@ class App extends Component {
           "lng": -0.148923
         },
         "title": "The Stables Market",
-        "fourSquareId":"4ac518ebf964a52049ac20e3",
+        "fourSquareId": "4ac518ebf964a52049ac20e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -81,7 +81,7 @@ class App extends Component {
           "lng": -0.173975
         },
         "title": "Spaniards Inn",
-        "fourSquareId":"4ac518baf964a520dfa120e3",
+        "fourSquareId": "4ac518baf964a520dfa120e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -118,7 +118,6 @@ class App extends Component {
     })
     // this.setState({
     //   markersAnimation: google.maps.Animation.BOUNCE
-
     // })
     this.fourSquareAPI(marker);
   }
@@ -160,25 +159,7 @@ class App extends Component {
         })
       }).catch(error => console.error(error));
   }
-  /**
-   * Fetch all markers.
-   
-  componentDidMount() {
-    fetch(`./markers.json`)
-      .then(response => {
-        console.log(response);
-        return response.json()
-      })
-      .then(data => {
-        console.log(data);
-        this.setState({
-          markers: data
-        });
-      }).catch(err => {
-        console.log(`Request failed. Returned status of ${err}`);
-      })
-  }
-  */
+
   render() {
 
     const image = {
