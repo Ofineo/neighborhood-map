@@ -1,8 +1,10 @@
 /* global google */
 
-import React from 'react';
+import React, { View } from 'react';
 import { compose, withProps, withStateHandlers } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import ImageContainer from './ImageContainer';
+import TextContainer from './TextContainer';
 
 const MapContainer = compose(
     // withScriptjs,
@@ -18,6 +20,17 @@ const MapContainer = compose(
                 lng: -0.163138
             }}
         >
+            {props.infoWindow.isOpen && <InfoWindow
+                position={{
+                    lat: props.infoWindow.marker.position.lat + 0.0017,
+                    lng: props.infoWindow.marker.position.lng
+                }}
+            >
+                <ImageContainer
+                    infoWindow={props.infoWindow}
+                />
+            </InfoWindow>}
+            
             {props.markers.map(marker => (
                 <Marker
                     key={marker.id}
@@ -27,12 +40,12 @@ const MapContainer = compose(
                     onClick={() => props.onMarkerClick(marker)}
                     icon={props.icon}
                 >
-                    {marker.infowindow.show === true && (
+                    {/*marker.infowindow.show === true && (
                         <InfoWindow >
                             <div>
                                 <p>{marker.infowindow.info}</p>
                             </div>
-                        </InfoWindow>)}
+                    </InfoWindow>)*/}
                 </Marker>
             ))}
         </GoogleMap>

@@ -4,6 +4,7 @@ import './App.css';
 import MapContainer from './MapContainer'
 import SideBar from './SideBar';
 import escapeRegExp from "escape-string-regexp";
+import { InfoWindow } from "react-google-maps";
 
 class App extends Component {
   state = {
@@ -15,6 +16,7 @@ class App extends Component {
           "lng": -0.154751
         },
         "title": "Secret Gardens",
+        "fourSquareId":"57d01d5638fa8331f862a9d8",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -27,6 +29,7 @@ class App extends Component {
           "lng": -0.1775898
         },
         "title": "Waterstones",
+        "fourSquareId":"4b5306b9f964a520ee8c27e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -39,6 +42,7 @@ class App extends Component {
           "lng": -0.167617
         },
         "title": "Kenwood House",
+        "fourSquareId":"4ac518cef964a52034a620e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -51,6 +55,7 @@ class App extends Component {
           "lng": -0.147071
         },
         "title": "Highgate cementery",
+        "fourSquareId":"4ac518cef964a5201ba620e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -63,6 +68,7 @@ class App extends Component {
           "lng": -0.148923
         },
         "title": "The Stables Market",
+        "fourSquareId":"4ac518ebf964a52049ac20e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -75,6 +81,7 @@ class App extends Component {
           "lng": -0.173975
         },
         "title": "Spaniards Inn",
+        "fourSquareId":"4ac518baf964a520dfa120e3",
         "infowindow": {
           "info": "This is an InfoWindow",
           "show": false
@@ -83,7 +90,12 @@ class App extends Component {
     ],
     markersShown: [],
     markersAnimation: google.maps.Animation.DROP,
-    sideBarOpen: false
+    sideBarOpen: false,
+    mapInfoWindow: {
+      isOpen: false,
+      content: '',
+      marker: {}
+    }
   }
 
   componentDidMount() {
@@ -108,6 +120,7 @@ class App extends Component {
     //   markersAnimation: google.maps.Animation.BOUNCE
 
     // })
+    this.fourSquareAPI(marker);
   }
 
   updateQuery = (query) => {
@@ -125,6 +138,28 @@ class App extends Component {
     }
   }
 
+  fourSquareAPI = (marker) => {
+    const requestApi = 'https://api.foursquare.com/v2/venues/';
+    const tokenClientId = 'VWFJCKVIGJHNSBKPC2NUVU4SHASM0QQWWBEHAHVKRPU30AVP';
+    const tokenClientSecret = 'ICBQHURYSAQELUERLHU50CXU4NGRIOHGFXBAXCLAA1IJ4SFF';
+    //let venue = '57d01d5638fa8331f862a9d8';
+
+    fetch(`${requestApi}${marker.fourSquareId}?&client_id=${tokenClientId}&client_secret=${tokenClientSecret}&v=20180314`,
+      {
+        method: 'GET',
+      }).then(response => response.json())
+      .then(data => {
+        console.log(data);
+        console.log(data.response);
+        this.setState({
+          mapInfoWindow: {
+            isOpen: true,
+            content: data.response,
+            marker
+          }
+        })
+      }).catch(error => console.error(error));
+  }
   /**
    * Fetch all markers.
    
@@ -175,10 +210,12 @@ class App extends Component {
               onMarkerClick={(marker) => this.handleMarkerClick(marker)}
               icon={image}
               animation={this.state.markersAnimation}
+              infoWindow={this.state.mapInfoWindow}
             />
+
           </div>
         </main>
-      </div>
+      </div >
     );
   }
 }

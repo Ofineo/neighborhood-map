@@ -5,7 +5,6 @@ import { push as Menu } from 'react-burger-menu';
 import Filter from './Filter';
 
 const SideBar = (props) => {
-
     return (
         <Menu
             id="push"
