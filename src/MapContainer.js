@@ -1,13 +1,11 @@
 /* global google */
 
-import React, { View } from 'react';
-import { compose, withProps, withStateHandlers } from "recompose";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import React from 'react';
+import { compose } from "recompose";
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import ImageContainer from './ImageContainer';
-import TextContainer from './TextContainer';
 
 const MapContainer = compose(
-    // withScriptjs,
     withGoogleMap,
 
 )((props) => {

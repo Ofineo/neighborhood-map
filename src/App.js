@@ -4,7 +4,6 @@ import './App.css';
 import MapContainer from './MapContainer'
 import SideBar from './SideBar';
 import escapeRegExp from "escape-string-regexp";
-import { InfoWindow } from "react-google-maps";
 
 class App extends Component {
   state = {
@@ -107,7 +106,7 @@ class App extends Component {
 
   handleMarkerClick = (marker) => {
     this.setState(prevState => {
-      return this.state.markers = prevState.markers.map(mk => {
+      prevState.markers = prevState.markers.map(mk => {
         if (mk.id === marker.id) {
           mk.infowindow.show = !mk.infowindow.show;
         } else {
@@ -123,16 +122,15 @@ class App extends Component {
   }
 
   updateQuery = (query) => {
-    console.log(query);
 
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i');
       this.setState(prevState => {
-        return this.state.markersShown = prevState.markers.filter((c) => match.test(c.title));
+        prevState.markersShown = prevState.markers.filter((c) => match.test(c.title));
       })
     } else {
       this.setState(prevState => {
-        return this.state.markersShown = prevState.markers;
+        prevState.markersShown = prevState.markers;
       })
     }
   }
@@ -141,14 +139,12 @@ class App extends Component {
     const requestApi = 'https://api.foursquare.com/v2/venues/';
     const tokenClientId = 'VWFJCKVIGJHNSBKPC2NUVU4SHASM0QQWWBEHAHVKRPU30AVP';
     const tokenClientSecret = 'ICBQHURYSAQELUERLHU50CXU4NGRIOHGFXBAXCLAA1IJ4SFF';
-    //let venue = '57d01d5638fa8331f862a9d8';
 
     fetch(`${requestApi}${marker.fourSquareId}?&client_id=${tokenClientId}&client_secret=${tokenClientSecret}&v=20180314`,
       {
         method: 'GET',
       }).then(response => response.json())
       .then(data => {
-        console.log(data);
         console.log(data.response);
         this.setState({
           mapInfoWindow: {
