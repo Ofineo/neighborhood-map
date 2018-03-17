@@ -13,8 +13,8 @@ const TextContainer = (props) => {
                 </div>
             )}
             <StarsRating
-            rating={props.infoWindow.content.venue.rating} 
-            /> 
+                rating={props.infoWindow.content.venue.rating}
+            />
         </div>
 
     );
