@@ -114,15 +114,16 @@ class App extends Component {
         }
         return mk;
       })
+      prevState.mapInfoWindow.isOpen = false;
     })
     // this.setState({
     //   markersAnimation: google.maps.Animation.BOUNCE
     // })
+
     this.fourSquareAPI(marker);
   }
 
   updateQuery = (query) => {
-
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i');
       this.setState(prevState => {
@@ -145,7 +146,7 @@ class App extends Component {
         method: 'GET',
       }).then(response => response.json())
       .then(data => {
-        console.log(data.response);
+        console.log(data.response, this.state.mapInfoWindow.isOpen);
         this.setState({
           mapInfoWindow: {
             isOpen: true,
