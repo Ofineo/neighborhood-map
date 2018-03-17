@@ -12,6 +12,7 @@ const SideBar = (props) => {
             pageWrapId="page-wrap"
             outerContainerId="outer-container"
             disableCloseOnEsc
+            onStateChange={(state) => props.handleStateChange(state)}
         >
             <Filter
                 updateQuery={(query) => props.updateQuery(query)}

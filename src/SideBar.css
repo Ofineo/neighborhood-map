@@ -71,6 +71,7 @@ img{
   
   /* Styling of overlay */
   .bm-overlay {
+    position: relative !important;
     background: rgba(0, 0, 0, 0.3);
   }
 

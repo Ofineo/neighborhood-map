@@ -89,7 +89,7 @@ class App extends Component {
     ],
     markersShown: [],
     markersAnimation: google.maps.Animation.DROP,
-    sideBarOpen: false,
+    menuOpen: false,
     mapInfoWindow: {
       isOpen: false,
       content: '',
@@ -127,11 +127,11 @@ class App extends Component {
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i');
       this.setState(prevState => {
-        prevState.markersShown = prevState.markers.filter((c) => match.test(c.title));
+        return prevState.markersShown = prevState.markers.filter((c) => match.test(c.title));
       })
     } else {
       this.setState(prevState => {
-        prevState.markersShown = prevState.markers;
+        return prevState.markersShown = prevState.markers;
       })
     }
   }
@@ -157,6 +157,10 @@ class App extends Component {
       }).catch(error => console.error(error));
   }
 
+  handleStateChange(state) {
+    this.setState({ menuOpen: state.isOpen })
+  }
+
   render() {
 
     const image = {
@@ -171,12 +175,13 @@ class App extends Component {
     return (
       <div id="outer-container">
         <SideBar
-          isOpen={this.state.sideBarOpen}
+          isOpen={this.state.menuOpen}
           pageWrapId="page-wrap"
           outerContainerId="outer-container"
           markers={this.state.markersShown}
           onMarkerClick={(marker) => this.handleMarkerClick(marker)}
           updateQuery={(query) => this.updateQuery(query)}
+          handleStateChange={(state) => this.handleStateChange(state)}
         />
         <main id="page-wrap">
           <div>
@@ -190,7 +195,6 @@ class App extends Component {
               animation={this.state.markersAnimation}
               infoWindow={this.state.mapInfoWindow}
             />
-
           </div>
         </main>
       </div >
