@@ -16,10 +16,6 @@ class App extends Component {
         },
         "title": "Secret Gardens",
         "fourSquareId": "57d01d5638fa8331f862a9d8",
-        "infowindow": {
-          "info": "This is an InfoWindow",
-          "show": false
-        }
       },
       {
         "id": 1,
@@ -29,10 +25,6 @@ class App extends Component {
         },
         "title": "Waterstones",
         "fourSquareId": "4b5306b9f964a520ee8c27e3",
-        "infowindow": {
-          "info": "This is an InfoWindow",
-          "show": false
-        }
       },
       {
         "id": 2,
@@ -42,10 +34,6 @@ class App extends Component {
         },
         "title": "Kenwood House",
         "fourSquareId": "4ac518cef964a52034a620e3",
-        "infowindow": {
-          "info": "This is an InfoWindow",
-          "show": false
-        }
       },
       {
         "id": 3,
@@ -55,10 +43,6 @@ class App extends Component {
         },
         "title": "Highgate cementery",
         "fourSquareId": "4ac518cef964a5201ba620e3",
-        "infowindow": {
-          "info": "This is an InfoWindow",
-          "show": false
-        }
       },
       {
         "id": 4,
@@ -68,10 +52,6 @@ class App extends Component {
         },
         "title": "The Stables Market",
         "fourSquareId": "4ac518ebf964a52049ac20e3",
-        "infowindow": {
-          "info": "This is an InfoWindow",
-          "show": false
-        }
       },
       {
         "id": 5,
@@ -81,10 +61,6 @@ class App extends Component {
         },
         "title": "Spaniards Inn",
         "fourSquareId": "4ac518baf964a520dfa120e3",
-        "infowindow": {
-          "info": "This is an InfoWindow",
-          "show": false
-        }
       }
     ],
     markersShown: [],
@@ -106,21 +82,13 @@ class App extends Component {
 
   handleMarkerClick = (marker) => {
     this.setState(prevState => {
-      prevState.markers = prevState.markers.map(mk => {
-        if (mk.id === marker.id) {
-          mk.infowindow.show = !mk.infowindow.show;
-        } else {
-          mk.infowindow.show = false;
-        }
-        return mk;
-      })
       prevState.mapInfoWindow.isOpen = false;
     })
-    // this.setState({
-    //   markersAnimation: google.maps.Animation.BOUNCE
-    // })
-
     this.fourSquareAPI(marker);
+  }
+
+  handleOnMouseOver =(marker)=>{
+    console.log('marker was moused over',marker);
   }
 
   updateQuery = (query) => {
@@ -161,6 +129,10 @@ class App extends Component {
     this.setState({ menuOpen: state.isOpen })
   }
 
+  currentMarker =(c)=>{
+    console.log('component',c);
+  }
+
   render() {
 
     const image = {
@@ -182,6 +154,7 @@ class App extends Component {
           onMarkerClick={(marker) => this.handleMarkerClick(marker)}
           updateQuery={(query) => this.updateQuery(query)}
           handleStateChange={(state) => this.handleStateChange(state)}
+          onMarkerMouseOver={(marker)=>this.handleOnMouseOver(marker)}
         />
         <main id="page-wrap">
           <div>
@@ -191,6 +164,7 @@ class App extends Component {
               mapElement={<div style={{ height: `100%` }} />}
               markers={this.state.markersShown}
               onMarkerClick={(marker) => this.handleMarkerClick(marker)}
+              currentMarker={(component)=>this.currentMarker(component)}
               icon={image}
               animation={this.state.markersAnimation}
               infoWindow={this.state.mapInfoWindow}

@@ -12,7 +12,7 @@ const MapContainer = compose(
 
     return (
         <GoogleMap
-            defaultZoom={14}
+            defaultZoom={13}
             defaultCenter={{
                 lat: 51.560842,
                 lng: -0.163138
@@ -37,6 +37,7 @@ const MapContainer = compose(
                     animation={props.animation}
                     onClick={() => props.onMarkerClick(marker)}
                     icon={props.icon}
+                    ref={(component)=>{props.currentMarker(component)} }
                 >
                 </Marker>
             ))}

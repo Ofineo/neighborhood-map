@@ -19,7 +19,14 @@ const SideBar = (props) => {
             />
             {props.markers.map(mk => (
                 <div key={mk.id}>
-                    <p id="markers" className="menu-item" onClick={() => props.onMarkerClick(mk)}>{mk.title} </p>
+                    <p
+                        id="markers"
+                        className="menu-item"
+                        onClick={() => props.onMarkerClick(mk)}
+                        onMouseOver={() => props.onMarkerMouseOver(mk)}
+                    >
+                        {mk.title}
+                    </p>
                 </div>
             ))}
         </Menu>
