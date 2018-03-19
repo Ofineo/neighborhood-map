@@ -12,6 +12,9 @@ class Filter extends Component {
     }
 
     render() {
+
+        if(this.props.isOpen) document.getElementById('search-box').focus();
+        
         return (
             <div
                 className="search-books-input-wrapper"

@@ -1,4 +1,5 @@
 /* global google */
+
 import React, { Component } from 'react';
 import './App.css';
 import MapContainer from './MapContainer'
@@ -81,14 +82,14 @@ class App extends Component {
   }
 
   handleMarkerClick = (marker) => {
-    this.setState(prevState => {
-      prevState.mapInfoWindow.isOpen = false;
-    })
+    // this.setState(prevState => {
+    //   prevState.mapInfoWindow.isOpen = false;
+    // })
     this.fourSquareAPI(marker);
   }
 
-  handleOnMouseOver =(marker)=>{
-    console.log('marker was moused over',marker);
+  handleOnMouseOver = (marker) => {
+    console.log('marker was moused over', marker);
   }
 
   updateQuery = (query) => {
@@ -114,7 +115,6 @@ class App extends Component {
         method: 'GET',
       }).then(response => response.json())
       .then(data => {
-        console.log(data.response, this.state.mapInfoWindow.isOpen);
         this.setState({
           mapInfoWindow: {
             isOpen: true,
@@ -122,19 +122,21 @@ class App extends Component {
             marker
           }
         })
-      }).catch(error => console.error(error));
+      }).catch(error => {
+        console.log('ups!...there was an error');
+        console.error('this is the error', error);
+      });
   }
 
   handleStateChange(state) {
     this.setState({ menuOpen: state.isOpen })
   }
 
-  currentMarker =(c)=>{
-    console.log('component',c);
+  currentMarker = (c) => {
+    console.log('component', c);
   }
 
   render() {
-
     const image = {
       url: 'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|3366CC|40|_|%E2%80%A2',
       size: new google.maps.Size(71, 71),
@@ -142,7 +144,6 @@ class App extends Component {
       anchor: new google.maps.Point(14, 36),
       scaledSize: new google.maps.Size(25, 36)
     }
-
 
     return (
       <div id="outer-container">
@@ -154,7 +155,7 @@ class App extends Component {
           onMarkerClick={(marker) => this.handleMarkerClick(marker)}
           updateQuery={(query) => this.updateQuery(query)}
           handleStateChange={(state) => this.handleStateChange(state)}
-          onMarkerMouseOver={(marker)=>this.handleOnMouseOver(marker)}
+          onMarkerMouseOver={(marker) => this.handleOnMouseOver(marker)}
         />
         <main id="page-wrap">
           <div>
@@ -164,7 +165,7 @@ class App extends Component {
               mapElement={<div style={{ height: `100%` }} />}
               markers={this.state.markersShown}
               onMarkerClick={(marker) => this.handleMarkerClick(marker)}
-              currentMarker={(component)=>this.currentMarker(component)}
+              currentMarker={(component) => this.currentMarker(component)}
               icon={image}
               animation={this.state.markersAnimation}
               infoWindow={this.state.mapInfoWindow}

@@ -5,6 +5,7 @@ import { push as Menu } from 'react-burger-menu';
 import Filter from './Filter';
 
 const SideBar = (props) => {
+
     return (
         <Menu
             id="push"
@@ -16,6 +17,7 @@ const SideBar = (props) => {
         >
             <Filter
                 updateQuery={(query) => props.updateQuery(query)}
+                isOpen={props.isOpen}
             />
             {props.markers.map(mk => (
                 <div key={mk.id}>

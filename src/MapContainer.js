@@ -20,7 +20,7 @@ const MapContainer = compose(
         >
             {props.infoWindow.isOpen && <InfoWindow
                 position={{
-                    lat: props.infoWindow.marker.position.lat + 0.0017,
+                    lat: props.infoWindow.marker.position.lat + 0.0035,
                     lng: props.infoWindow.marker.position.lng
                 }}
             >
