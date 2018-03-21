@@ -4,6 +4,7 @@ import React from 'react';
 import { compose } from "recompose";
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import ImageContainer from './ImageContainer';
+import './MapContainer.css'
 
 const MapContainer = compose(
     withGoogleMap,
@@ -12,6 +13,7 @@ const MapContainer = compose(
 
     return (
         <GoogleMap
+            tabindex="-1"
             defaultZoom={13}
             defaultCenter={{
                 lat: 51.560842,
@@ -37,7 +39,7 @@ const MapContainer = compose(
                     animation={props.animation}
                     onClick={() => props.onMarkerClick(marker)}
                     icon={props.icon}
-                    ref={(component)=>{props.currentMarker(component)} }
+                    ref={(component) => { props.currentMarker(component) }}
                 >
                 </Marker>
             ))}

@@ -1,4 +1,4 @@
-/* global google */
+/* global google*/
 
 import React, { Component } from 'react';
 import './App.css';
@@ -92,6 +92,15 @@ class App extends Component {
     console.log('marker was moused over', marker);
   }
 
+  pressedKey = (e, marker) => {
+    if (e.code === 'Space') this.handleMarkerClick(marker);
+  }
+
+  handleMarkerFocus = (marker) => {
+    document.getElementById(`marker-${marker.id}`).addEventListener('keydown', e => this.pressedKey(e, marker));
+    document.getElementById(`marker-${marker.id}`).removeEventListener('keydown', e => this.pressedKey(e, marker));
+  }
+
   updateQuery = (query) => {
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i');
@@ -128,8 +137,8 @@ class App extends Component {
       });
   }
 
-  handleStateChange(state) {
-    this.setState({ menuOpen: state.isOpen })
+  handleStateChange = (state) => {
+    this.setState({ menuOpen: state.isOpen });
   }
 
   currentMarker = (c) => {
@@ -137,6 +146,7 @@ class App extends Component {
   }
 
   render() {
+
     const image = {
       url: 'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|3366CC|40|_|%E2%80%A2',
       size: new google.maps.Size(71, 71),
@@ -153,10 +163,11 @@ class App extends Component {
           outerContainerId="outer-container"
           markers={this.state.markersShown}
           onMarkerClick={(marker) => this.handleMarkerClick(marker)}
+          onMarkerFocus={(marker) => this.handleMarkerFocus(marker)}
           updateQuery={(query) => this.updateQuery(query)}
           handleStateChange={(state) => this.handleStateChange(state)}
           onMarkerMouseOver={(marker) => this.handleOnMouseOver(marker)}
-        />
+          />
         <main id="page-wrap">
           <div>
             <MapContainer

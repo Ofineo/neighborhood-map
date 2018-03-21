@@ -6,6 +6,8 @@ import Filter from './Filter';
 
 const SideBar = (props) => {
 
+  
+
     return (
         <Menu
             id="push"
@@ -14,6 +16,7 @@ const SideBar = (props) => {
             outerContainerId="outer-container"
             disableCloseOnEsc
             onStateChange={(state) => props.handleStateChange(state)}
+            onFocus={(e)=>props.menuOnFocus(e)}
         >
             <Filter
                 updateQuery={(query) => props.updateQuery(query)}
@@ -22,9 +25,10 @@ const SideBar = (props) => {
             {props.markers.map(mk => (
                 <div key={mk.id}>
                     <p
-                        id="markers"
-                        className="menu-item"
+                        id={'marker-' + mk.id}
+                        className="menu-item markers"
                         onClick={() => props.onMarkerClick(mk)}
+                        onFocus={() => props.onMarkerFocus(mk)}
                         onMouseOver={() => props.onMarkerMouseOver(mk)}
                     >
                         {mk.title}

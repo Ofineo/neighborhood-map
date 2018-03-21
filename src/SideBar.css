@@ -16,7 +16,16 @@ body{
     margin: 0;
 }
 
-#markers {
+button:focus{
+
+    text-indent: -9999px;
+    background: rgba(255, 255, 255, 0) !important;
+    opacity: 1 !important;
+    outline: 5px solid rgb(72, 101, 163) !important;
+    outline-offset: 2px;
+}
+
+.markers {
     text-decoration: none;
     color: #fdfdfd;	
     cursor: pointer;
@@ -31,9 +40,9 @@ img{
     position: fixed;
     width: 36px;
     height: 30px;
-    left: 110px;
+    left: 120px;
     top: 10px;
-  }
+  }       
   
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
