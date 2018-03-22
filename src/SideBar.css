@@ -1,5 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch:400,700');
 
 html {
     box-sizing: border-box;
@@ -29,6 +30,9 @@ button:focus{
     text-decoration: none;
     color: #fdfdfd;	
     cursor: pointer;
+    color: aliceblue;
+    font-size: 1.5em;
+    font-family: 'Cabin Sketch', bold, cursive;
 }
 
 img{
@@ -41,7 +45,7 @@ img{
     width: 36px;
     height: 30px;
     left: 120px;
-    top: 10px;
+    top: 70px;
   }       
   
   /* Color/shape of burger icon bars */

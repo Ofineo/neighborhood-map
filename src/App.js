@@ -1,5 +1,4 @@
 /* global google*/
-
 import React, { Component } from 'react';
 import './App.css';
 import MapContainer from './MapContainer'
@@ -155,6 +154,9 @@ class App extends Component {
 
     return (
       <article id="outer-container">
+        <header>
+          <span>MY NEIGHBORHOOD TOP LOCATIONS</span>
+        </header>
         <SideBar
           isOpen={this.state.menuOpen}
           pageWrapId="page-wrap"
@@ -165,7 +167,7 @@ class App extends Component {
           updateQuery={(query) => this.updateQuery(query)}
           handleStateChange={(state) => this.handleStateChange(state)}
           onMarkerMouseOver={(marker) => this.handleOnMouseOver(marker)}
-          />
+        />
         <section id="page-wrap" role="application">
           <div >
             <MapContainer
@@ -184,6 +186,6 @@ class App extends Component {
       </article >
     );
   }
-}   
+}
 
 export default App;

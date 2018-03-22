@@ -26,7 +26,6 @@ const SideBar = (props) => {
             {props.markers.map(mk => (
                 <section role="listbox" key={mk.id}>
                     <p
-                        role="option"
                         id={'marker-' + mk.id}
                         className="menu-item markers"
                         onClick={() => props.onMarkerClick(mk)}

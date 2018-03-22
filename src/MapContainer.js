@@ -1,5 +1,3 @@
-/* global google */
-
 import React from 'react';
 import { compose } from "recompose";
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
@@ -14,9 +12,9 @@ const MapContainer = compose(
     return (
         <GoogleMap
             tabindex="-1"
-            defaultZoom={13}
+            defaultZoom={14}
             defaultCenter={{
-                lat: 51.560842,
+                lat: 51.5502042,
                 lng: -0.163138
             }}
         >
