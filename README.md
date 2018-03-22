@@ -1,3 +1,30 @@
+#My Neighborhood Map
+
+This application shows 6 hardcoded Google Maps Markers in my neighborhood.
+To start with the sidebar is undocked and you need to open it manually. That way we can use the full screen to show the map. 
+To open the undocked sidebar and select the markers in the list I decided to only do it with the spacebar press.
+every marker show when pressed an infowindow with extra information for the place and several pictures.
+Enjoy!
+
+##DEPENDENCIES
+
+- react-google-maps
+full API to support Google Maps for React.
+- react-sidebar
+React component to create a dockable sidebar.
+- escape-string-regexp
+Escape RegExp special characters.
+- recompose
+React utility belt for function components and higher-order components. 
+- reactstrap
+Stateless React Components for Bootstrap 4.
+
+##3rd PARTY APIs
+
+- Foursquare API
+- Google Maps API
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
