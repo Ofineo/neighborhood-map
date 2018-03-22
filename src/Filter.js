@@ -46,6 +46,7 @@ class Filter extends Component {
                     onChange={(event) => this.updateSearchBox(event.target.value)}
                     type="text"
                     placeholder="filter by marker name"
+                    label="filter by marker name"
                 />
                 <span id="filter"><i className="fas fa-filter"></i></span>
             </div>

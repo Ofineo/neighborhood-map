@@ -4,7 +4,7 @@ import StarsRating from './StarsRating';
 
 const TextContainer = (props) => {
     return (
-        <div>
+        <aside>
             <p>{props.infoWindow.marker.title}</p>
             {props.infoWindow.content.venue.tips.groups["0"].items["0"] && (
                 <div>
@@ -15,7 +15,7 @@ const TextContainer = (props) => {
             <StarsRating
                 rating={props.infoWindow.content.venue.rating}
             />
-        </div>
+        </aside>
 
     );
 }

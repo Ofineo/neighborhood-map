@@ -6,7 +6,7 @@ import Filter from './Filter';
 
 const SideBar = (props) => {
 
-  
+
 
     return (
         <Menu
@@ -16,15 +16,17 @@ const SideBar = (props) => {
             outerContainerId="outer-container"
             disableCloseOnEsc
             onStateChange={(state) => props.handleStateChange(state)}
-            onFocus={(e)=>props.menuOnFocus(e)}
+            onFocus={(e) => props.menuOnFocus(e)}
         >
             <Filter
+                role="search"
                 updateQuery={(query) => props.updateQuery(query)}
                 isOpen={props.isOpen}
             />
             {props.markers.map(mk => (
-                <div key={mk.id}>
+                <section role="listbox" key={mk.id}>
                     <p
+                        role="option"
                         id={'marker-' + mk.id}
                         className="menu-item markers"
                         onClick={() => props.onMarkerClick(mk)}
@@ -33,7 +35,7 @@ const SideBar = (props) => {
                     >
                         {mk.title}
                     </p>
-                </div>
+                </section>
             ))}
         </Menu>
     );

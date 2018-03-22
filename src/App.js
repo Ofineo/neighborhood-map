@@ -82,9 +82,6 @@ class App extends Component {
   }
 
   handleMarkerClick = (marker) => {
-    // this.setState(prevState => {
-    //   prevState.mapInfoWindow.isOpen = false;
-    // })
     this.fourSquareAPI(marker);
   }
 
@@ -124,6 +121,7 @@ class App extends Component {
         method: 'GET',
       }).then(response => response.json())
       .then(data => {
+        console.log(data);
         this.setState({
           mapInfoWindow: {
             isOpen: true,
@@ -156,7 +154,7 @@ class App extends Component {
     }
 
     return (
-      <div id="outer-container">
+      <article id="outer-container">
         <SideBar
           isOpen={this.state.menuOpen}
           pageWrapId="page-wrap"
@@ -168,8 +166,8 @@ class App extends Component {
           handleStateChange={(state) => this.handleStateChange(state)}
           onMarkerMouseOver={(marker) => this.handleOnMouseOver(marker)}
           />
-        <main id="page-wrap">
-          <div>
+        <section id="page-wrap" role="application">
+          <div >
             <MapContainer
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `100vh` }} />}
@@ -182,10 +180,10 @@ class App extends Component {
               infoWindow={this.state.mapInfoWindow}
             />
           </div>
-        </main>
-      </div >
+        </section>
+      </article >
     );
   }
-}
+}   
 
 export default App;
