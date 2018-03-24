@@ -17,7 +17,7 @@ class App extends Component {
         "title": "Secret Gardens",
         "fourSquareId": "57d01d5638fa8331f862a9d8",
         "animation": null,
-        "icon": {},
+        "icon": google.maps.Marker.iconBase,
       },
       {
         "id": 1,
@@ -28,7 +28,7 @@ class App extends Component {
         "title": "Waterstones",
         "fourSquareId": "4b5306b9f964a520ee8c27e3",
         "animation": null,
-        "icon": {},
+        "icon": google.maps.Marker.iconBase,
       },
       {
         "id": 2,
@@ -39,7 +39,7 @@ class App extends Component {
         "title": "Kenwood House",
         "fourSquareId": "4ac518cef964a52034a620e3",
         "animation": null,
-        "icon": {},
+        "icon": google.maps.Marker.iconBase
       },
       {
         "id": 3,
@@ -50,7 +50,7 @@ class App extends Component {
         "title": "Highgate cementery",
         "fourSquareId": "4ac518cef964a5201ba620e3",
         "animation": null,
-        "icon": {},
+        "icon": google.maps.Marker.iconBase,
       },
       {
         "id": 4,
@@ -61,7 +61,7 @@ class App extends Component {
         "title": "The Stables Market",
         "fourSquareId": "4ac518ebf964a52049ac20e3",
         "animation": null,
-        "icon": {},
+        "icon": google.maps.Marker.iconBase,
       },
       {
         "id": 5,
@@ -72,7 +72,7 @@ class App extends Component {
         "title": "Spaniards Inn",
         "fourSquareId": "4ac518baf964a520dfa120e3",
         "animation": null,
-        "icon": {},
+        "icon": google.maps.Marker.iconBase
       }
     ],
     markersShown: [],
@@ -94,7 +94,6 @@ class App extends Component {
   handleMarkerClick = (marker, image) => {
     this.setState(prevState => {
       return prevState.markersShown = prevState.markersShown.map(mark => {
-        console.log(mark.animation);
         if (mark.title === marker.title) {
           mark.icon = {
             url: 'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|3366CC|40|_|%E2%80%A2',
@@ -108,7 +107,6 @@ class App extends Component {
           mark.animation = 0;
           mark.icon = google.maps.Marker.iconBase;
         }
-        console.log(mark);
         return mark;
       });
     });
@@ -140,6 +138,7 @@ class App extends Component {
 
   handleOnMouseOver = (marker) => {
     console.log('marker was moused over', marker);
+    //TO BE DEVELOPED IN THE FUTURE
   }
 
   handleMarkerFocus = (marker) => {
@@ -168,18 +167,11 @@ class App extends Component {
     this.setState({ menuOpen: state.isOpen });
   }
 
-  currentMarker = (c) => {
-
-  }
-
   render() {
-
-
-
     return (
       <article id="outer-container">
         <header>
-          <span>MY NEIGHBORHOOD TOP LOCATIONS</span>
+          <h1>MY NEIGHBORHOOD TOP LOCATIONS</h1>
         </header>
         <SideBar
           isOpen={this.state.menuOpen}
@@ -200,7 +192,6 @@ class App extends Component {
               mapElement={<div style={{ height: `100%` }} />}
               markers={this.state.markersShown}
               onMarkerClick={(marker) => this.handleMarkerClick(marker, null)}
-              currentMarker={(component) => this.currentMarker(component)}
               infoWindow={this.state.mapInfoWindow}
             />
           </div>

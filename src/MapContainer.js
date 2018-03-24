@@ -37,7 +37,6 @@ const MapContainer = compose(
                     animation={marker.animation}
                     onClick={() => props.onMarkerClick(marker)}
                     icon={marker.icon}
-                    ref={(component) => { props.currentMarker(component) }}
                 >
                 </Marker>
             ))}
