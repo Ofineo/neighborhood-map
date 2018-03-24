@@ -1,4 +1,5 @@
 import React from 'react';
+import './StarsRating.css';
 
 const StarRating = (props) => {
 
@@ -15,7 +16,8 @@ const StarRating = (props) => {
                 <div style={style}>
                     <span><b>Rating</b></span>
                     <br/>
-                    <span>★★★★★ {props.rating}</span>
+                    <span className="rating-stars">★★★★★ </span>
+                    <span>{props.rating}</span>
                 </div>
             )}
         </div>

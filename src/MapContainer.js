@@ -34,9 +34,9 @@ const MapContainer = compose(
                     key={marker.id}
                     position={marker.position}
                     title={marker.title}
-                    animation={props.animation}
+                    animation={marker.animation}
                     onClick={() => props.onMarkerClick(marker)}
-                    icon={props.icon}
+                    icon={marker.icon}
                     ref={(component) => { props.currentMarker(component) }}
                 >
                 </Marker>
