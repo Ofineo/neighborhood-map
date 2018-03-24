@@ -15,7 +15,7 @@ const StarRating = (props) => {
             {props.rating && (
                 <div style={style}>
                     <span><b>Rating</b></span>
-                    <br/>
+                    <br />
                     <span className="rating-stars">★★★★★ </span>
                     <span>{props.rating}</span>
                 </div>

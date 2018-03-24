@@ -83,15 +83,23 @@ class App extends Component {
       marker: {}
     }
   }
-
+  /*
+  Start the map with all the markers and the Markers DROP animation.
+  */
   componentDidMount() {
     this.setState({
       markersShown: this.state.markers,
-      markers: this.state.markers.map(marker => marker.animation = google.maps.Animation.DROP)
+      markers: this.state.markers.map(marker => {
+        marker.animation = google.maps.Animation.DROP;
+        return marker;
+      })
     })
   }
-
-  handleMarkerClick = (marker, image) => {
+  /*
+  onClick will call the funtion to retrieve data from the foursquare API. 
+  It will change the marker icon and set a new animation to clearly show which marker was clicked. 
+  */
+  handleMarkerClick = (marker) => {
     this.setState(prevState => {
       return prevState.markersShown = prevState.markersShown.map(mark => {
         if (mark.title === marker.title) {
@@ -112,7 +120,9 @@ class App extends Component {
     });
     this.fourSquareAPI(marker);
   }
-
+  /*
+  Get data from foursquare.
+  */
   fourSquareAPI = (marker) => {
     const requestApi = 'https://api.foursquare.com/v2/venues/';
     const tokenClientId = 'VWFJCKVIGJHNSBKPC2NUVU4SHASM0QQWWBEHAHVKRPU30AVP';
@@ -131,7 +141,8 @@ class App extends Component {
           }
         })
       }).catch(error => {
-        console.log('ups!...there was an error');
+        console.log('ups!...there was an error =(');
+        console.log('Are you sure you are connected to the internet?');
         console.error('this is the error', error);
       });
   }
@@ -140,7 +151,9 @@ class App extends Component {
     console.log('marker was moused over', marker);
     //TO BE DEVELOPED IN THE FUTURE
   }
-
+  /*
+  When sidebar menu is open and tab is somewhere in the list of markers handle keyboard press on marker
+  */
   handleMarkerFocus = (marker) => {
     document.getElementById(`marker-${marker.id}`).addEventListener('keydown', e => this.pressedKey(e, marker));
     document.getElementById(`marker-${marker.id}`).removeEventListener('keydown', e => this.pressedKey(e, marker));
@@ -149,7 +162,9 @@ class App extends Component {
   pressedKey = (e, marker) => {
     if (e.code === 'Space') this.handleMarkerClick(marker);
   }
-
+  /*
+  filter markers on user input
+  */
   updateQuery = (query) => {
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i');
@@ -157,12 +172,12 @@ class App extends Component {
         return prevState.markersShown = prevState.markers.filter((c) => match.test(c.title));
       })
     } else {
-      this.setState(prevState => {
-        return prevState.markersShown = prevState.markers;
-      })
+      this.setState({ markersShown: this.state.markers })
     }
   }
-
+  /*
+  Sidebar menu kept on syncrony with state on App.js 
+  */
   handleStateChange = (state) => {
     this.setState({ menuOpen: state.isOpen });
   }
@@ -191,7 +206,7 @@ class App extends Component {
               containerElement={<div style={{ height: `100vh` }} />}
               mapElement={<div style={{ height: `100%` }} />}
               markers={this.state.markersShown}
-              onMarkerClick={(marker) => this.handleMarkerClick(marker, null)}
+              onMarkerClick={(marker) => this.handleMarkerClick(marker)}
               infoWindow={this.state.mapInfoWindow}
             />
           </div>

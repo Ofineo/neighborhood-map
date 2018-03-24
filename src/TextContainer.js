@@ -15,6 +15,7 @@ const TextContainer = (props) => {
             <StarsRating
                 rating={props.infoWindow.content.venue.rating}
             />
+            <a target="_blank" id="thanks" rel="noopener noreferrer" href="https://developer.foursquare.com/">Information provided by Foursquare.</a>
         </aside>
 
     );

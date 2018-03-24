@@ -1,3 +1,6 @@
+/*
+To avoid focus in Google maps anchor tags
+*/
 a {
     visibility:hidden; 
 }

@@ -5,11 +5,15 @@ class Filter extends Component {
     state = {
         query: ''
     }
-
+    /*
+    Set the first tab focus on the burger menu to open the sidebar menu
+    */
     componentDidMount() {
         document.getElementsByClassName('bm-burger-button')[0].lastChild.setAttribute('tabindex', '1');
     }
-
+    /* 
+    Remove focus from closed sidebar menu or focus on the search box if open
+    */
     componentDidUpdate() {
         if (this.props.isOpen) {
             this.changeTabIndex(0);
@@ -18,8 +22,9 @@ class Filter extends Component {
             this.changeTabIndex(-1);
         }
     }
-
-    //manage tabIndex focus when sidebar menu open or closed
+    /*
+    manage tabIndex focus when sidebar menu open or closed
+    */
     changeTabIndex = (tabIndex) => {
         document.getElementById('search-box').setAttribute('tabindex', tabIndex);
         let elem = document.getElementsByClassName('menu-item markers');
@@ -28,7 +33,9 @@ class Filter extends Component {
         }
         document.getElementsByTagName('button')[0].setAttribute('tabindex', tabIndex);
     }
-
+    /*
+    Manage the user input
+    */
     updateSearchBox = (query) => {
         this.setState({ query })
         this.props.updateQuery(query);

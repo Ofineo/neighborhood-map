@@ -6,7 +6,7 @@ To open the undocked sidebar and select the markers in the list I decided to onl
 every marker show when pressed an infowindow with extra information for the place and several pictures.
 Enjoy!
 
-##DEPENDENCIES
+###DEPENDENCIES
 
 - react-google-maps
 full API to support Google Maps for React.
@@ -19,11 +19,22 @@ React utility belt for function components and higher-order components.
 - reactstrap
 Stateless React Components for Bootstrap 4.
 
-##3rd PARTY APIs
+###3rd PARTY APIs
 
 - Foursquare API
 - Google Maps API
 
+##BUILD AND TEST THE APPLICATION
+
+- To build the application run `npm install`.
+- To run the application run `npm start`.
+
+##OFFLINE USE TEST
+
+To check offline use you can install a simple http server [npm install simplehttpserver -g](https://www.npmjs.com/package/simplehttpserver). Build the application and run by simplehttpserver [directory].
+
+
+##STANDARD README INFORMATION FOR CREATE REACT APP  
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
