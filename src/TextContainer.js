@@ -1,6 +1,7 @@
 import React from 'react';
 import './textContainer.css';
 import StarsRating from './StarsRating';
+import PropTypes from 'prop-types';
 
 const TextContainer = (props) => {
     return (
@@ -20,4 +21,9 @@ const TextContainer = (props) => {
 
     );
 }
+
+TextContainer.propTypes = {
+    infoWindow: PropTypes.object
+};
+
 export default TextContainer;
