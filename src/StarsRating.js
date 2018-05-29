@@ -1,5 +1,6 @@
 import React from 'react';
 import './StarsRating.css';
+import PropTypes from 'prop-types';
 
 const StarRating = (props) => {
 
@@ -22,5 +23,9 @@ const StarRating = (props) => {
             )}
         </div>
     );
+}
+
+StarRating.propTypes={
+    rating: PropTypes.number
 }
 export default StarRating;
