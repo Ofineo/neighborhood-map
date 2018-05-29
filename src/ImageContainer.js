@@ -1,6 +1,7 @@
 import React from 'react';
 import TextContainer from './TextContainer';
 import { UncontrolledCarousel } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 const ImageContainer = (props) => {
 
@@ -32,4 +33,8 @@ const ImageContainer = (props) => {
 
     );
 }
+ImageContainer.propTypes={
+    infoWindow: PropTypes.object.isRequired
+}
+
 export default ImageContainer;
