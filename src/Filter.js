@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Filter.css';
+import PropTypes from 'prop-types';
 
 class Filter extends Component {
     state = {
@@ -59,6 +60,11 @@ class Filter extends Component {
             </div>
         );
     }
+}
+
+Filter.propTypes={
+    isOpen: PropTypes.bool.isRequired,
+    updateQuery: PropTypes.func
 }
 
 export default Filter;
