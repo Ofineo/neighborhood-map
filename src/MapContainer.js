@@ -3,6 +3,7 @@ import { compose } from "recompose";
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import ImageContainer from './ImageContainer';
 import './MapContainer.css'
+import PropTypes from 'prop-types';
 
 const MapContainer = compose(
     withGoogleMap,
@@ -43,4 +44,13 @@ const MapContainer = compose(
         </GoogleMap>
     )
 })
+MapContainer.propTypes={
+    infoWindow: PropTypes.object.isRequired,
+    markers: PropTypes.array.isRequired,
+    loadingElement: PropTypes.element.isRequired,
+    containerElement: PropTypes.element.isRequired,
+    mapElement: PropTypes.element.isRequired,
+    onMarkerClick: PropTypes.func.isRequired
+}
+
 export default MapContainer;
