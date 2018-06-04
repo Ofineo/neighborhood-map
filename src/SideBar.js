@@ -3,6 +3,7 @@ import React from 'react';
 //import { Nav, Navbar, NavbarBrand, NavItem, NavLink, NavbarToggler, Collapse } from 'reactstrap';
 import { push as Menu } from 'react-burger-menu';
 import Filter from './Filter';
+import PropTypes from "prop-types";
 
 const SideBar = (props) => {
 
@@ -36,6 +37,17 @@ const SideBar = (props) => {
             ))}
         </Menu>
     );
+}
+SideBar.propTypes={
+    markers: PropTypes.array.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    pageWrapId: PropTypes.string,
+    outerContainerId: PropTypes.string,
+    onMarkerClick: PropTypes.func.isRequired,
+    onMarkerFocus: PropTypes.func.isRequired,
+    updateQuery: PropTypes.func.isRequired,
+    handleStateChange: PropTypes.func.isRequired,
+    onMarkerMouseOver: PropTypes.func.isRequired
 }
 
 export default SideBar;
