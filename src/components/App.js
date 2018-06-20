@@ -1,8 +1,8 @@
 /* global google*/
 import React, { Component } from 'react';
 import './App.css';
-import MapContainer from './MapContainer'
-import SideBar from './SideBar';
+import MapContainer from './map/MapContainer'
+import SideBar from './sidebar/SideBar';
 import escapeRegExp from "escape-string-regexp";
 
 class App extends Component {

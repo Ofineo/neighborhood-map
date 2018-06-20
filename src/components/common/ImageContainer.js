@@ -23,6 +23,8 @@ const ImageContainer = (props) => {
         }
     ];
 
+    console.log(props.infoWindow.content.venue);
+
     return (
         <div>
             <UncontrolledCarousel items={photos} />

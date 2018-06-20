@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from "recompose";
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
-import ImageContainer from './ImageContainer';
+import ImageContainer from '../common/ImageContainer';
 import './MapContainer.css'
 import PropTypes from 'prop-types';
 
