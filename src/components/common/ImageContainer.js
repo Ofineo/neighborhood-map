@@ -16,11 +16,11 @@ const ImageContainer = (props) => {
             altText: `${props.infoWindow.marker.title} ${props.infoWindow.content.venue.photos.groups["0"].name}`,
             caption: ''
         },
-        {
-            src: `${props.infoWindow.content.venue.photos.groups["0"].items["2"].prefix}200x150${props.infoWindow.content.venue.photos.groups["0"].items["2"].suffix}`,
-            altText: `${props.infoWindow.marker.title} ${props.infoWindow.content.venue.photos.groups["0"].name}`,
-            caption: ''
-        }
+        // {
+        //     src: `${props.infoWindow.content.venue.photos.groups["0"].items["2"].prefix}200x150${props.infoWindow.content.venue.photos.groups["0"].items["2"].suffix}`,
+        //     altText: `${props.infoWindow.marker.title} ${props.infoWindow.content.venue.photos.groups["0"].name}`,
+        //     caption: ''
+        // }
     ];
 
     console.log(props.infoWindow.content.venue);
