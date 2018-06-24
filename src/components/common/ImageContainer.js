@@ -24,12 +24,12 @@ const ImageContainer = (props) => {
     ];
 
     return (
-        <div>
+        <React.Fragment>
             <UncontrolledCarousel items={photos} />
             <TextContainer
                 infoWindow={props.infoWindow}
             />
-        </div>
+        </React.Fragment>
 
     );
 }
