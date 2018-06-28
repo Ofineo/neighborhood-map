@@ -24,6 +24,7 @@ const MapContainer = compose(
                     lat: props.infoWindow.marker.position.lat + 0.0035,
                     lng: props.infoWindow.marker.position.lng
                 }}
+                onCloseClick={props.infoWindowCloseClick}
             >
                 <ImageContainer
                     infoWindow={props.infoWindow}

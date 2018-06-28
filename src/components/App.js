@@ -116,6 +116,11 @@ class App extends Component {
     this.setState({ menuOpen: state.isOpen });
   }
 
+  closeInfoWindow = () => {
+    this.setState({ mapInfoWindow:{
+      isOpen: false }});
+  }
+
   render() {
     return (
       <article id="outer-container">
@@ -142,6 +147,7 @@ class App extends Component {
               markers={this.state.markersShown}
               onMarkerClick={(marker) => this.handleMarkerClick(marker)}
               infoWindow={this.state.mapInfoWindow}
+              infoWindowCloseClick={()=>this.closeInfoWindow()}
             />
           </div>
         </section>
