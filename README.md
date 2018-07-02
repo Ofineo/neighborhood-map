@@ -9,15 +9,15 @@ Enjoy!
 ###DEPENDENCIES
 
 - react-google-maps
-full API to support Google Maps for React.
+full API to support Google Maps for React. https://github.com/tomchentw/react-google-maps 
 - react-sidebar
-React component to create a dockable sidebar.
+React component to create a dockable sidebar. https://github.com/negomi/react-burger-menu
 - escape-string-regexp
-Escape RegExp special characters.
+Escape RegExp special characters. https://github.com/sindresorhus/escape-string-regexp
 - recompose
-React utility belt for function components and higher-order components. 
+React utility belt for function components and higher-order components. https://github.com/acdlite/recompose
 - reactstrap
-Stateless React Components for Bootstrap 4.
+Stateless React Components for Bootstrap 4. https://reactstrap.github.io/ 
 
 ###3rd PARTY APIs
 
