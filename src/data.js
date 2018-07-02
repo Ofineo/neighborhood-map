@@ -66,6 +66,17 @@ let markers = [
     "fourSquareId": "4ac518baf964a520dfa120e3",
     "animation": null,
     "icon": google.maps.Marker.iconBase
+  },
+  {
+    "id": 5,
+    "position": {
+      "lat": 51.56685226932494,
+      "lng": -0.18893844046065386
+    },
+    "title": "Golders hill park zoo",
+    "fourSquareId": "4db40b7f5da3a76f44362c60",
+    "animation": null,
+    "icon": google.maps.Marker.iconBase
   }
 ];
 
